@@ -19,7 +19,9 @@ const statsRoutes = require('./src/routes/statsRoutes');
 const app = express();
 
 // Connect DB
-connectDB();
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+}
 
 // Middlewares
 app.use(cors());
@@ -56,9 +58,11 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-  console.log(`📚 Swagger docs: http://localhost:${PORT}/api/docs`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+    console.log(`📚 Swagger docs: http://localhost:${PORT}/api/docs`);
+  });
+}
 
 module.exports = app;

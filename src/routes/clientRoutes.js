@@ -85,6 +85,18 @@ router.post('/', authenticate, authorize('manager', 'admin'), validate(createCli
  *         name: id
  *         required: true
  *         schema: { type: string }
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string }
+ *               email: { type: string }
+ *               phone: { type: string }
+ *               address: { type: string }
+ *               company: { type: string }
  *     responses:
  *       200: { description: Client updated }
  */

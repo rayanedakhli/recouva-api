@@ -84,6 +84,17 @@ router.post('/', authenticate, authorize('manager', 'admin'), validate(createInv
  *         name: id
  *         required: true
  *         schema: { type: string }
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount: { type: number }
+ *               dueDate: { type: string, format: date }
+ *               status: { type: string, enum: [pending, partial, paid, overdue] }
+ *               description: { type: string }
  *     responses:
  *       200: { description: Invoice updated }
  */

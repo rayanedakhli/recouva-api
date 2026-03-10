@@ -29,7 +29,7 @@ beforeAll(async () => {
   const invoiceRes = await request(app)
     .post('/api/invoices')
     .set('Authorization', `Bearer ${token}`)
-    .send({ client: clientRes.body.client._id, amount: 1000, dueDate: '2025-12-31' });
+    .send({ client: clientRes.body.client._id, amount: 1000, dueDate: '2027-12-31' });
 
   invoiceId = invoiceRes.body.invoice._id;
 });

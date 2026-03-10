@@ -85,6 +85,17 @@ router.post('/', authenticate, validate(createRecoveryActionSchema), createRecov
  *         name: id
  *         required: true
  *         schema: { type: string }
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               type: { type: string, enum: [call, email, letter, visit] }
+ *               notes: { type: string }
+ *               result: { type: string, enum: [promise_to_pay, no_answer, refused, paid, other] }
+ *               nextFollowUp: { type: string, format: date }
  *     responses:
  *       200: { description: Recovery action updated }
  */

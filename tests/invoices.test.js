@@ -48,7 +48,7 @@ describe('POST /api/invoices', () => {
       .send({
         client: clientId,
         amount: 1000,
-        dueDate: '2025-12-31',
+        dueDate: '2027-12-31',
         description: 'Test invoice'
       });
     expect(res.statusCode).toBe(201);
@@ -71,7 +71,7 @@ describe('GET /api/invoices', () => {
     await request(app)
       .post('/api/invoices')
       .set('Authorization', `Bearer ${managerToken}`)
-      .send({ client: clientId, amount: 500, dueDate: '2025-12-31' });
+      .send({ client: clientId, amount: 500, dueDate: '2027-12-31' });
   });
 
   it('should get all invoices', async () => {
